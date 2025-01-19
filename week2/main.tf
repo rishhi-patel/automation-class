@@ -14,7 +14,7 @@ provider "docker" {
 resource "docker_image" "demo_web" {
   name = "demo-web-app:latest"
   build {
-    context    = "${path.module}"
+    context    = path.module
     dockerfile = "Dockerfile"
   }
 }
