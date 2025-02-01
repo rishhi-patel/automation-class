@@ -498,3 +498,10 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+"week2@file:":
+  version "1.0.0"
+  resolved "file:"
+  dependencies:
+    express "^4.21.2"
+    week2 "file:"
