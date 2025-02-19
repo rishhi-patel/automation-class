@@ -1,3 +1,10 @@
-$env:AWS_ACCESS_KEY_ID="AKIAYMOVNQLJEU46SWE7"
+
+### FOR Windows
+`$env:AWS_ACCESS_KEY_ID="AKIAYMOVNQLJEU46SWE7"
 $env:AWS_SECRET_ACCESS_KEY="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"
-$env:AWS_REGION="us-east-1"
+$env:AWS_REGION="us-east-1"`
+
+### FOR MAC`
+`export AWS_ACCESS_KEY_ID="AKIAYMOVNQLJEU46SWE7"
+export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
+export AWS_REGION="us-east-1"`
