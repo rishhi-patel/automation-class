@@ -59,6 +59,7 @@ dist/
 .tern-port
 
 # Terraform
+.terraform*
 *.tfstate
 *.tfstate.*
 .terraform/
