@@ -1,14 +1,12 @@
-# Define the AWS provider
+
 provider "aws" {
-  region = "us-east-1" # Change this if needed
+  region = "us-east-1"
 }
 
-# Local variables for bucket name
 locals {
-  s3_bucket_name = "rishi-patel-8972657-web-bucket" # Ensure uniqueness
+  s3_bucket_name = "rishi-patel-8972657-web-bucket"
 }
 
-# Define resource tags
 variable "resource_tags" {
   default = {
     Owner     = "Rishi Patel"
@@ -17,15 +15,13 @@ variable "resource_tags" {
   }
 }
 
-# Create an S3 bucket
 resource "aws_s3_bucket" "web_bucket" {
   bucket        = local.s3_bucket_name
-  force_destroy = true # Allows Terraform to delete the bucket even if it contains objects
+  force_destroy = true
 
   tags = var.resource_tags
 }
 
-# Enable Static Website Hosting
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.web_bucket.id
 
@@ -38,7 +34,6 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
 }
 
-# Define a bucket policy to allow public access
 resource "aws_s3_bucket_policy" "public_access" {
   bucket = aws_s3_bucket.web_bucket.id
 
@@ -57,7 +52,6 @@ resource "aws_s3_bucket_policy" "public_access" {
 EOF
 }
 
-# Upload web content to S3
 resource "aws_s3_object" "htmlfile" {
   bucket = aws_s3_bucket.web_bucket.bucket
   key    = "webcontent/index.html"
@@ -98,7 +92,7 @@ resource "aws_s3_object" "studentsimg" {
   tags = var.resource_tags
 }
 
-# Block public access settings to allow access via the bucket policy
+
 resource "aws_s3_bucket_public_access_block" "public_access" {
   bucket = aws_s3_bucket.web_bucket.id
 
@@ -108,7 +102,6 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = false
 }
 
-# Output the website endpoint
 output "website_url" {
   value = aws_s3_bucket_website_configuration.website.website_endpoint
 }
