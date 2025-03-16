@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1" # Change if needed
+  region = var.aws_region
 }
 
 resource "aws_db_instance" "postgres" {
@@ -7,10 +7,10 @@ resource "aws_db_instance" "postgres" {
   storage_type         = "gp2"
   engine               = "postgres"
   engine_version       = "15.2"
-  instance_class       = "db.t3.micro"
-  db_name              = "mydatabase"
-  username             = "admin"
-  password             = "SecureRishi123"
+  instance_class       = var.instance_class
+  db_name              = var.db_name
+  username             = var.db_user
+  password             = var.db_password
   parameter_group_name = "default.postgres15"
   publicly_accessible  = true
   skip_final_snapshot  = true
